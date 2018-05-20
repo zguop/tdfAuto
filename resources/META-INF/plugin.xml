@@ -1,0 +1,53 @@
+<idea-plugin>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>Plugin display name here</name>
+    <version>1.0</version>
+    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+
+    <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="107.121"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends>com.intellij.modules.lang</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <!--<action id="com.zmsoft.action.Tan" class="com.zmsoft.action.Tan" text="tan" description="tan">-->
+        <!--<add-to-group group-id="EditMenu" anchor="first"/>-->
+        <!--<keyboard-shortcut keymap="$default" first-keystroke="alt E"/>-->
+        <!--</action>-->
+
+
+        <group id="TDFAutoId"
+               class="com.zmsoft.action.TDFAutoGroup"
+               text="火九月" popup="true" icon="/icon/logo.png">
+            <add-to-group group-id="MainToolBar" anchor="last"/>
+            <action class="com.zmsoft.action.SelectModuleAction" id="SelectModuleActionId" text="fire module"
+                    icon="/icon/item1.png"/>
+            <action class="com.zmsoft.action.ConfigAction" id="ConfigAction" text="fire config"
+                    icon="/icon/item1.png"/>
+            <action class="com.zmsoft.action.Tan" id="TanId" text="测试按钮"/>
+        </group>
+    </actions>
+
+</idea-plugin>
