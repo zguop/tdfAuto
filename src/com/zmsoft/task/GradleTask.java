@@ -4,6 +4,7 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.zmsoft.utils.NotificationUtils;
+import com.zmsoft.utils.PlatformUtils;
 import io.netty.util.internal.StringUtil;
 import org.gradle.tooling.*;
 import org.jetbrains.annotations.Nls;
@@ -54,6 +55,10 @@ public class GradleTask extends Task.Backgroundable {
                 .forProjectDirectory(new File(basePath))
                 .connect();
         try {
+            if (!PlatformUtils.hasTaskInProject(connection, taskName)) {
+                NotificationUtils.error("project:" + project.getName() + "中没有找到相应的task:" + taskName);
+                return;
+            }
             //将Gradle嵌入到工程中，并提供API让用户实现gradle的功能，包括执行并监控gradle的构建，查询构建的详细信息等
             BuildLauncher buildLauncher = connection.newBuild();
             buildLauncher.forTasks(taskName);

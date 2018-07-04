@@ -16,6 +16,7 @@ import com.zmsoft.task.GradleTask;
 import io.netty.util.internal.StringUtil;
 import org.gradle.tooling.GradleConnector;
 import org.gradle.tooling.ProjectConnection;
+import org.gradle.tooling.model.GradleProject;
 import org.gradle.tooling.model.idea.IdeaModule;
 import org.gradle.tooling.model.idea.IdeaProject;
 import org.jetbrains.annotations.NotNull;
@@ -105,27 +106,47 @@ public class PlatformUtils {
         return moduleNames;
     }
 
+    /**
+     * 判断project中是否包含某个task
+     */
+    public static boolean hasTaskInProject(ProjectConnection connection, String taskName) {
+        if (connection == null || taskName == null) {
+            return false;
+        }
+        GradleProject projectIdea = connection.getModel(GradleProject.class);
+        if (projectIdea != null) {
+            for (org.gradle.tooling.model.GradleTask task : projectIdea.getTasks()) {
+                if (task.getName().equals(taskName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * 获取到所有模块后
      */
     public static void toProjectModulesGet(AnActionEvent anActionEvent, List<String> allModules) {
         Project project = anActionEvent.getProject();
-        //去创建dialog
-        List<String> selectModules = UIUtils.selectModuleDialog(project, "请选择加载的模块", allModules);
+        //去创建dialog 这里是所有勾选的module
+        List<String> selectModules = UIUtils.selectModuleDialog(project, "选择加载的模块\r\n这里勾选的模块将以源码方式引入", allModules, false);
         if (selectModules.isEmpty()) {
             NotificationUtils.info("没有选择，任务取消", project);
             return;
         }
+        List<String> inputModules = PlatformUtils.getInputModules().stream().filter(s -> !s.startsWith(TDFConstants.SYMBOL_1)).collect(Collectors.toList());
+        if (selectModules.size() != inputModules.size()) {
+            List<String> unModules = UIUtils.selectModuleDialog(project, "选择卸载的模块\r\n这里展示的是上一个弹框所没有勾选的模块，那么这里，不勾选，则卸载模块，勾选则以maven形式进行依赖", selectModules, true);
+            selectModules.addAll(unModules);
+        }
         String s1 = selectModules.stream()
                 .reduce((s, s2) -> s + "-" + s2)
                 .map(s -> "-P" + TDFConstants.REQUIRED_MODULES + "=" + s).get();
-
         List<String> arguments = Stream.of(s1)
                 .collect(Collectors.toList());
-
         String taskName = TDFConstants.SELECT_MODULE_TASK;
-
         PlatformUtils.executeBackgroundTask(() -> new GradleTask(project, taskName, arguments, new GradleTaskHandler(taskName, anActionEvent)).queue());
     }
 

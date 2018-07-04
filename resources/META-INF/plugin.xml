@@ -1,8 +1,8 @@
 <idea-plugin>
-    <id>com.your.company.unique.plugin.id</id>
+    <id>com.zmsoft.aboom.yb</id>
     <name>Plugin display name here</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="aboomy@163.com" url="https://github.com/zguop/tdfAuto">aboom.yb</vendor>
 
     <description><![CDATA[
       Enter short description for your plugin here.<br>
@@ -31,13 +31,6 @@
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-        <!--<action id="com.zmsoft.action.Tan" class="com.zmsoft.action.Tan" text="tan" description="tan">-->
-        <!--<add-to-group group-id="EditMenu" anchor="first"/>-->
-        <!--<keyboard-shortcut keymap="$default" first-keystroke="alt E"/>-->
-        <!--</action>-->
-
-
         <group id="TDFAutoId"
                class="com.zmsoft.action.TDFAutoGroup"
                text="火九月" popup="true" icon="/icon/logo.png">

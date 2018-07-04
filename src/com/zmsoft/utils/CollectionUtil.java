@@ -25,7 +25,6 @@ public class CollectionUtil {
         return !isEmpty(map);
     }
 
-
     public static boolean isEmpty(String... args) {
         return args == null || args.length == 0;
     }

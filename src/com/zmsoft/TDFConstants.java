@@ -6,10 +6,17 @@ package com.zmsoft;
  */
 public class TDFConstants {
 
+    public static final String PLUGIN_NAME = "🔥九月";
+
     /**
      * 所选择的模块参数
      */
     public static final String REQUIRED_MODULES = "requiredModules";
+
+    /**
+     * 仓库卸载标识
+     */
+    public static final String UN_MODULE = "0";
 
 
     /**
@@ -50,6 +57,13 @@ public class TDFConstants {
      * 记录输入的模块
      */
     public static final String INPUT_MODULE = "input_module";
+
+
+    /**
+     * 提示控制符
+     */
+    public static final String SYMBOL_1 = "#";
+    public static final String SYMBOL_2 = "----------";
 
 
 }
