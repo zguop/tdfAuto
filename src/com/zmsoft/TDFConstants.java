@@ -6,7 +6,7 @@ package com.zmsoft;
  */
 public class TDFConstants {
 
-    public static final String PLUGIN_NAME = "🔥九月";
+    public static final String PLUGIN_NAME = "🔥2DFire🔥";
 
     /**
      * 所选择的模块参数

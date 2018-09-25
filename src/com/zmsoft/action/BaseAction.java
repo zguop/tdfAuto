@@ -4,6 +4,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.Project;
+import com.zmsoft.TDFConstants;
 import com.zmsoft.utils.NotificationUtils;
 import com.zmsoft.utils.PlatformUtils;
 
@@ -23,7 +24,7 @@ public abstract class BaseAction extends AnAction {
         Presentation presentation = event.getPresentation();
         presentation.setEnabled(false);
         Project project = event.getProject();
-        NotificationUtils.info("火九月开始执行任务", project);
+        NotificationUtils.info(TDFConstants.PLUGIN_NAME + "开始执行任务", project);
         try {
             onActionPerform(event);
         } catch (Throwable throwable) {

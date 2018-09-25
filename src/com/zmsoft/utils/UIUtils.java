@@ -78,7 +78,7 @@ public class UIUtils {
         if (isUnModule) {
             map.forEach((s, aBoolean) -> {
                 if (!s.startsWith(TDFConstants.SYMBOL_2) && !orphanModulesList.isItemSelected(s)) {
-                    selectModules.add(s + TDFConstants.UN_MODULE);
+                    selectModules.add(TDFConstants.UN_MODULE + s);
                 }
             });
         } else {
