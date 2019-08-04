@@ -59,6 +59,7 @@ task performToSelectModule {
 
 
 # 最后
+插件已经在实际项目应用，后续会在我的个人项目中也进行配置，具体可以关注我的练手项目[Towards](https://github.com/zguop/Towards)
 
 -
 xiexie ni de guāng gù ！ 喜欢的朋友轻轻右上角赏个star。
