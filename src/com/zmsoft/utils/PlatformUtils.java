@@ -225,8 +225,8 @@ public class PlatformUtils {
     /**
      * 获取本地存储的key value ，string类型
      */
-    public static String getData(String key, String defaultValue) {
-        return PropertiesComponent.getInstance().getValue(key, defaultValue);
+    public static String getData(String key) {
+        return PropertiesComponent.getInstance().getValue(key, "");
     }
 
     /**
@@ -239,7 +239,7 @@ public class PlatformUtils {
 
     public static List<String> getInputModules() {
         List<String> list = new ArrayList<>();
-        String inputModules = getData(TDFConstants.INPUT_MODULE, null);
+        String inputModules = getData(TDFConstants.INPUT_MODULE);
         if (!StringUtil.isNullOrEmpty(inputModules)) {
             String[] split = inputModules.split("\n");
             list = Arrays.stream(split).map(String::trim).collect(Collectors.toList());

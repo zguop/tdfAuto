@@ -33,7 +33,7 @@ public class ModuleInputDialog extends JFrame {
     }
 
     private void init() {
-        String info = PlatformUtils.getData(TDFConstants.INPUT_MODULE, null);
+        String info = PlatformUtils.getData(TDFConstants.INPUT_MODULE);
         if (StringUtil.isNullOrEmpty(info)) {
             return;
         }

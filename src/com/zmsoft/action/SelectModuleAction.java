@@ -20,7 +20,7 @@ public class SelectModuleAction extends BaseAction {
     void onActionPerform(AnActionEvent event) {
         //展示所有模块提供选择
         Project project = event.getProject();
-        String inputModule = PlatformUtils.getData(TDFConstants.INPUT_MODULE, null);
+        String inputModule = PlatformUtils.getData(TDFConstants.INPUT_MODULE);
         if (StringUtil.isNullOrEmpty(inputModule)) {
             NotificationUtils.error("未配置项目模块");
             new ModuleInputDialog(project).setVisible(true);
