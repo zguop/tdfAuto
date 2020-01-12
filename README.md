@@ -19,8 +19,7 @@
 ![Alt text](png/img7.jpg)
 
 #### 模块选择module
-点击模块选择，列表会展示config中配置的模块，会读取当前项目中include的模块，在弹出的列表中默认勾选上include的模块，如：
-![Alt text](png/img8.jpg)
+点击模块选择，列表会展示config中配置的模块，会读取当前项目中include的模块，在弹出的列表中默认勾选上include的模块，
 选择完成后点击 ok ，在项目中接收到勾选模块的信息，则需要与glrade通信，通过gradle task 接收传递过来的勾选模块的信息。
 
 #### 项目中接收模块信息的配置
